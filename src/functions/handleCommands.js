@@ -9,8 +9,11 @@ module.exports = (client, fs, path) => {
     client.commandArray = [];
 
     // For-Of Loop for SubFolders
+    console.log(commandFolders);
     for (const folder of commandFolders) {
+      if (folder == ".DS_Store") continue;
       const folderPath = path.join(commandsPath, folder);
+      
       const commandFiles = fs
         .readdirSync(folderPath)
         .filter((file) => file.endsWith(".js"));
